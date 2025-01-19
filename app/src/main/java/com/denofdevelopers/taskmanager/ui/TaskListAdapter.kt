@@ -12,9 +12,9 @@ import com.denofdevelopers.taskmanager.databinding.TaskItemBinding
 class TaskListAdapter(
     private var onEdit: (Task) -> Unit,
     private var onDelete: (Task) -> Unit
-) : ListAdapter<Task, TaskListAdapter.JuiceListViewHolder>(JuiceDiffCallback()) {
+) : ListAdapter<Task, TaskListAdapter.TaskListViewHolder>(TaskDiffCallback()) {
 
-    class JuiceListViewHolder(
+    class TaskListViewHolder(
         private val binding: TaskItemBinding,
         private val onEdit: (Task) -> Unit,
         private val onDelete: (Task) -> Unit
@@ -34,18 +34,18 @@ class TaskListAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = JuiceListViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TaskListViewHolder(
         TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
         onEdit,
         onDelete
     )
 
-    override fun onBindViewHolder(holder: JuiceListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TaskListViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 }
 
-class JuiceDiffCallback : DiffUtil.ItemCallback<Task>() {
+class TaskDiffCallback : DiffUtil.ItemCallback<Task>() {
     override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
         return oldItem.id == newItem.id
     }
