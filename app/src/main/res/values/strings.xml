@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task Manager</string>
+    <string name="task_title">Task Title</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="delete_button">Delete button</string>
+    <string name="task_icon">Task icon</string>
+</resources>
